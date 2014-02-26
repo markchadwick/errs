@@ -28,4 +28,9 @@ var _ = Describe("Errs", func() {
 		Expect(stack).To(HaveLen(4))
 		Expect(stack[0]).To(Equal("bad name"))
 	})
+
+	It("should pass through a nil error", func() {
+		err := Wrap(nil)
+		Expect(err).To(BeNil())
+	})
 })

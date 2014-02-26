@@ -29,6 +29,10 @@ func New(f string, args ...interface{}) *Err {
 }
 
 func Wrap(e error) *Err {
+	if e == nil {
+		return nil
+	}
+
 	es, ok := e.(*Err)
 	if ok {
 		es.trace(1)
