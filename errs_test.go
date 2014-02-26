@@ -33,4 +33,12 @@ var _ = Describe("Errs", func() {
 		err := Wrap(nil)
 		Expect(err).To(BeNil())
 	})
+
+	It("should handle wrapping a nil error", func() {
+		var e0 *Err = nil
+		Expect(e0).To(BeNil())
+
+		var e1 = Wrap(e0)
+		Expect(e1).To(BeNil())
+	})
 })

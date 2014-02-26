@@ -3,6 +3,7 @@ package errs
 import (
 	"bytes"
 	"fmt"
+	"reflect"
 	"runtime"
 )
 
@@ -29,7 +30,7 @@ func New(f string, args ...interface{}) *Err {
 }
 
 func Wrap(e error) *Err {
-	if e == nil {
+	if e == nil || reflect.ValueOf(e).IsNil() {
 		return nil
 	}
 
